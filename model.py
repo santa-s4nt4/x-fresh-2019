@@ -37,7 +37,8 @@ classes = ["Abstract_Expressionism",
 
 nb_classes = len(classes)
 
-img_weight, img_height = 150, 150
+img_width = 150
+img_height = 150
 
 train_data_dir = '/dataset/01train'
 validation_data_dir = 'dataset/02test'
@@ -56,3 +57,23 @@ train_datagen = ImageDataGenerator(
 )
 
 validation_datagen = ImageDataGenerator(rescale=1.0 / 255)
+
+train_generator = train_datagen.flow_from_directory(
+    train_data_dir,
+    target_size=(img_width, img_height),
+    color_mode='rgb',
+    classes=classes,
+    class_mode='categorical',
+    batch_size=batch_size,
+    shuffle=True
+)
+
+validation_generator = validation_datagen.flow_from_directory(
+    validation_data_dir,
+    target_size=(img_width, img_height),
+    color_mode='rgb',
+    classes=classes,
+    class_mode='categorical',
+    batch_size=batch_size,
+    shuffle=True
+)
