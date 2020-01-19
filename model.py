@@ -7,7 +7,6 @@ from keras.layers import Input, Activation, Dropout, Flatten, Dense
 from keras.preprocessing.image import ImageDataGenerator
 from keras import optimizers
 import numpy as np
-import matplotlib.pyplot as plt
 import time
 from PIL import Image
 from PIL import ImageFile
@@ -114,20 +113,11 @@ history = vgg_model.fit_generator(
     validation_data=validation_generator,
     nb_val_samples=nb_validation_samples)
 
-# resultsディレクトリを作成
+
 result_dir = 'results'
 if not os.path.exists(result_dir):
     os.mkdir(result_dir)
 
 vgg_model.save_weights(os.path.join(result_dir, 'Final.h5'))
 
-vgg_model.save(os.path.join(result_dir, 'VGGtake1.h5')
-
-
-plt.plot(history.history["acc"], label="acc", ls="-", marker="o")
-plt.plot(history.history["val_acc"], label="val_acc", ls="-", marker="x")
-plt.ylabel("accuracy")
-plt.xlabel("epoch")
-plt.legend(loc="best")
-plt.savefig('Final.png')
-plt.show()
+vgg_model.save(os.path.join(result_dir, 'VGGtake1.h5'))
