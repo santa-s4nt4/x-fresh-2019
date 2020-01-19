@@ -8,6 +8,9 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras import optimizers
 import numpy as np
 import time
+from PIL import Image
+
+Image.MAX_IMAGE_PIXELS = 1000000000
 
 classes = ["Abstract_Expressionism",
            "Action_painting",
