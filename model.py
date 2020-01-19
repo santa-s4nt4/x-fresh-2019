@@ -38,3 +38,13 @@ classes = ["Abstract_Expressionism",
 nb_classes = len(classes)
 
 img_weight, img_height = 150, 150
+
+train_data_dir = ''
+validation_data_dir = ''
+
+nb_train_samples = 7000
+nb_validation_samples = 1000
+
+batch_size = 100
+
+nb_epoch = 20
