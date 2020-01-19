@@ -40,7 +40,7 @@ nb_classes = len(classes)
 img_width = 150
 img_height = 150
 
-train_data_dir = '/dataset/01train'
+train_data_dir = 'dataset/01train'
 validation_data_dir = 'dataset/02test'
 
 nb_train_samples = 7000
