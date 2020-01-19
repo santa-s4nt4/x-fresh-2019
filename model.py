@@ -9,7 +9,9 @@ from keras import optimizers
 import numpy as np
 import time
 from PIL import Image
+from PIL import ImageFile
 
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 Image.MAX_IMAGE_PIXELS = 1000000000
 
 classes = ["Abstract_Expressionism",
