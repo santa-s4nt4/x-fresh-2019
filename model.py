@@ -1,4 +1,5 @@
 import os
+import keras
 from keras.applications.vgg16 import VGG16
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential, Model
@@ -77,3 +78,32 @@ validation_generator = validation_datagen.flow_from_directory(
     batch_size=batch_size,
     shuffle=True
 )
+
+keras.applications.vgg16.VGG16(include_top=True, weights='imagenet',
+                               input_tensor=None, input_shape=None, pooling=None, classes=1000)
+
+
+input_tensor = Input(shape=(img_width, img_height, 3))
+vgg16 = VGG16(include_top=False, weights='imagenet', input_tensor=input_tensor)
+
+top_model = Sequential()
+top_model.add(Flatten(input_shape=vgg16.output_shape[1:]))
+top_model.add(Dense(256, activation='relu'))
+top_model.add(Dropout(0.5))
+top_model.add(Dense(nb_classes, activation='softmax'))
+
+vgg_model = Model(input=vgg16.input, output=top_model(vgg16.output))
+
+for layer in vgg_model.layers[:15]:
+    layer.trainable = False
+
+vgg_model.compile(loss='categorical_crossentropy',
+                  optimizer=optimizers.SGD(lr=1e-3, momentum=0.9),
+                  metrics=['accuracy'])
+
+history = vgg_model.fit_generator(
+    train_generator,
+    samples_per_epoch=nb_train_samples,
+    nb_epoch=nb_epoch,
+    validation_data=validation_generator,
+    nb_val_samples=nb_validation_samples)
