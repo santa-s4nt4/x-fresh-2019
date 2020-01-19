@@ -39,8 +39,8 @@ nb_classes = len(classes)
 
 img_weight, img_height = 150, 150
 
-train_data_dir = ''
-validation_data_dir = ''
+train_data_dir = '/dataset/01train'
+validation_data_dir = 'dataset/02test'
 
 nb_train_samples = 7000
 nb_validation_samples = 1000
@@ -48,3 +48,11 @@ nb_validation_samples = 1000
 batch_size = 100
 
 nb_epoch = 20
+
+train_datagen = ImageDataGenerator(
+    rescale=1.0 / 255,
+    zoom_range=0.2,
+    horizontal_flip=True
+)
+
+validation_datagen = ImageDataGenerator(rescale=1.0 / 255)
