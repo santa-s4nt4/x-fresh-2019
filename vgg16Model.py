@@ -29,3 +29,36 @@ model.compile(optimizer=SGD(lr=0.0001, momentum=0.9),
 
 model.summary()
 
+train_datagen = ImageDataGenerator(
+    rescale=1.0 / 255,
+    shear_range=0.2,
+    zoom_range=0.2,
+    horizontal_flip=True
+)
+
+validation_datagen = ImageDataGenerator(rescale=1.0/255)
+
+train_generator = train_datagen.flow_from_directory(
+    train_dir,
+    target_size=(224, 224),
+    batch_size=batch_size,
+    class_mode='categorical',
+    shuffle=True
+)
+
+validation_generator = validation_datagen.flow_from_directory(
+    validation_dir,
+    target_size=(224, 224),
+    batch_size=batch_size,
+    class_mode='categorical',
+    shuffle=True
+)
+
+hist = model.fit_generator(train_generator,
+                           epochs=200,
+                           verbose=1,
+                           validation_data=validation_generator,
+                           callbacks=[CSVLogger(file_name + '.csv')])
+
+
+model.save(file_name+'.h5')
