@@ -7,8 +7,8 @@ from keras.callbacks import CSVLogger
 
 n_categories = 26
 batch_size = 32
-train_dir = ''
-validation_dir = ''
+train_dir = 'dataset/train'
+validation_dir = 'dataset/validation'
 file_name = 'x-fresh'
 
 
