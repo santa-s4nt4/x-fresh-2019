@@ -11,6 +11,14 @@ train_dir = ''
 validation_dir = ''
 file_name = 'x-fresh'
 
+base_model = VGG16(
+    include_top=False,
+    weights="imagenet",
+    input_shape=None
+)
+base_model.summary()
+
+'''
 base_model = VGG16(weights='imagenet', include_top=False,
                    input_tensor=Input(shape=(224, 224, 3)))
 
@@ -62,3 +70,4 @@ hist = model.fit_generator(train_generator,
 
 
 model.save(file_name+'.h5')
+'''
