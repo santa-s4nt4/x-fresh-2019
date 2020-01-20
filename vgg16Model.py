@@ -4,9 +4,14 @@ from keras.applications.vgg16 import VGG16
 from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers import SGD
 from keras.callbacks import CSVLogger
+from PIL import Image
+from PIL import ImageFile
+
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+Image.MAX_IMAGE_PIXELS = 1000000000
 
 n_categories = 27
-batch_size = 32
+batch_size = 32  # 64でも可
 train_dir = 'dataset/train'
 validation_dir = 'dataset/validation'
 file_name = 'x-fresh'
