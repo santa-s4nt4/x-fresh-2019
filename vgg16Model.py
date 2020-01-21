@@ -78,6 +78,6 @@ hist = model.fit_generator(train_generator,
                            verbose=1,
                            validation_data=validation_generator,
                            validation_steps=num_validation//batch_size,
-                           callbacks=[CSVLogger(file_name+'.csv')])
+                           callbacks=[CSVLogger('model/'+file_name+'.csv')])
 
-model.save(file_name+'.h5')
+model.save('model/'+file_name+'.h5')

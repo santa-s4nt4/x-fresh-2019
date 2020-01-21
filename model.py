@@ -114,7 +114,7 @@ history = vgg_model.fit_generator(
     nb_val_samples=nb_validation_samples)
 
 
-result_dir = 'results'
+result_dir = 'model'
 if not os.path.exists(result_dir):
     os.mkdir(result_dir)
 
