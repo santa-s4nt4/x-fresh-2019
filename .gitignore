@@ -1,9 +1,5 @@
 .venv/
 .vscode/
-downloads/
 wikiart/
-wikiart_csv/
 dataset/
-results/
-x-fresh.csv
-x-fresh.h5
+model/
