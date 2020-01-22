@@ -68,8 +68,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 294.0, 128.0, 104.0, 22.0 ],
-					"text" : "udpreceive 54410"
+					"patching_rect" : [ 294.0, 128.0, 103.0, 22.0 ],
+					"text" : "udpreceive 54411"
 				}
 
 			}
