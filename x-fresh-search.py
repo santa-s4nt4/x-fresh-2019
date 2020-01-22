@@ -27,4 +27,6 @@ fc2_features = model.predict(x)
 
 items = loaded_model.get_nns_by_vector(
     fc2_features[0], 3, search_k=-1, include_distances=False)
-print(items)
+print(items[0])
+print(items[1])
+print(items[2])
