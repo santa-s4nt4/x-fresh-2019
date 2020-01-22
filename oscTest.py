@@ -13,8 +13,8 @@ CLIENT_PORT = 54411
 client = udp_client.UDPClient(IP, CLIENT_PORT)
 
 
-def oscReceive(unused_addr, signal):
-    print('Receive Number: ' + signal)
+def oscReceive(unused_addr, bang):
+    print('Receive Number: ' + bang)
     msg = OscMessageBuilder(address='/')
     msg.add_arg('is genius.')
 
@@ -23,7 +23,7 @@ def oscReceive(unused_addr, signal):
 
 
 dispatcher = Dispatcher()
-dispatcher.map('/signal', oscReceive)
+dispatcher.map('/bang', oscReceive)
 
 server = osc_server.ThreadingOSCUDPServer((IP, SERVER_PORT), dispatcher)
 print(f'Serving on {server.server_address}')

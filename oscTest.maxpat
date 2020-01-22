@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -766.0, 654.0, 640.0, 480.0 ],
+		"rect" : [ -758.0, 656.0, 640.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,13 +39,25 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 72.0, 85.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-7",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 158.0, 128.0, 74.0, 22.0 ],
-					"text" : "/ \"is genius.\""
+					"patching_rect" : [ 239.0, 179.0, 74.0, 22.0 ],
+					"text" : "/bang start"
 				}
 
 			}
@@ -56,8 +68,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 213.0, 77.0, 103.0, 22.0 ],
-					"text" : "udpreceive 54411"
+					"patching_rect" : [ 294.0, 128.0, 104.0, 22.0 ],
+					"text" : "udpreceive 54410"
 				}
 
 			}
@@ -68,8 +80,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 72.0, 128.0, 76.0, 22.0 ],
-					"text" : "/signal santa"
+					"patching_rect" : [ 72.0, 128.0, 65.0, 22.0 ],
+					"text" : "/bang start"
 				}
 
 			}
@@ -86,6 +98,13 @@
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-5", 0 ]
