@@ -45,6 +45,7 @@ def oscReceive(unused_addr, bang):
     items = loaded_model.get_nns_by_vector(
         fc2_features[0], 3, search_k=-1, include_distances=False)
     print(items)
+    print(items[0])
 
     msg = OscMessageBuilder(address='/')
     msg.add_arg(items[0])
