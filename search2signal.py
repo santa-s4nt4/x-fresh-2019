@@ -3,6 +3,7 @@ import numpy as np
 from keras.preprocessing import image
 from keras.applications.vgg16 import preprocess_input, VGG16
 from keras.models import Model
+from keras.backend import tensorflow_backend as backend
 from annoy import AnnoyIndex
 
 # server
@@ -21,7 +22,9 @@ client = udp_client.UDPClient(IP, CLIENT_PORT)
 
 
 def oscReceive(unused_addr, bang):
+
     while True:
+
         if bang == 'finish':
             print('Receive Number: ' + bang)
             break
@@ -29,7 +32,8 @@ def oscReceive(unused_addr, bang):
         print('Receive Number: ' + bang)
 
         annoy_model_path = 'model/x-fresh.ann'
-        search_img_path = 'export.png'
+        search_img_path = 'dataset/export/export.png'
+        print(search_img_path)
         annoy_dim = 4096
 
         base_model = VGG16(weights="imagenet")
@@ -57,6 +61,7 @@ def oscReceive(unused_addr, bang):
 
         m = msg.build()
         client.send(m)
+        backend.clear_session()
         print(f'Serving on {server.server_address}')
         break
 
