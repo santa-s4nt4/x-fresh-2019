@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -1109.0, 636.0, 906.0, 618.0 ],
+		"rect" : [ 1370.0, 712.0, 906.0, 618.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,

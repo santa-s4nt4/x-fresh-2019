@@ -61,13 +61,8 @@ def oscReceive(unused_addr, bang):
 
         msg = OscMessageBuilder(address='/image')
 
-        '''jitterで完結
         msg.add_arg(items[0])
         print(items[0])
-        '''
-
-        # openFrameworksに送信する場合
-        msg.add_arg(items[0])
         print('images/' + str(items[0]) + '.jpg')
 
         m = msg.build()

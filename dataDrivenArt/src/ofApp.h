@@ -15,6 +15,7 @@ public:
 	void update();
 	void draw();
 	ofxOscReceiver receiver;
+	int oscMessage;
 	ScreenConsole console;
 	ofImage cameraImage;
 	ofImage artImage;

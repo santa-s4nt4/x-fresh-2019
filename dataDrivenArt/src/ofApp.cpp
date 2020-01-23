@@ -19,31 +19,29 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	cameraImage.load("export/export.png");
-	//artImage.load("images/1.jpg");
-}
-
-//--------------------------------------------------------------
-void ofApp::draw(){
-	cameraImage.draw(0, ofGetHeight() / 2, ofGetWidth() / 2, ofGetHeight() / 2);
-	//artImage.draw(ofGetWidth() / 2, 0, ofGetWidth(), ofGetHeight() / 2);
-
 	while (receiver.hasWaitingMessages()) {
 		ofxOscMessage m;
 
 		receiver.getNextMessage(m);
 
-		std::string address = m.getAddress();
-		console("address") << address << " " << m.getNumArgs();
+		oscMessage = m.getArgAsInt32(0);
+		console("address") << oscMessage << " " << m.getNumArgs();
 
 		if (m.getAddress() == "/image") {
 			std::string front = "images/";
 			std::string back = ".jpg";
-			std::string path = front + address + back;
+			std::string path = front + std::to_string(oscMessage) + back;
 			console(path);
 			artImage.load(path);
-			artImage.draw(ofGetWidth() / 2, 0, ofGetWidth(), ofGetHeight() / 2);
+			cameraImage.load("export/export.png");
 		}
 	}
+}
+
+//--------------------------------------------------------------
+void ofApp::draw(){
+	cameraImage.draw(0, ofGetHeight() / 2, ofGetWidth() / 2, ofGetHeight() / 2);
+	artImage.draw(ofGetWidth() / 2, 0, ofGetWidth(), ofGetHeight() / 2);
+
 	console.print(40, 40);
 }
