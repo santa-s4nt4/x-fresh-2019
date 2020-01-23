@@ -8,7 +8,7 @@ base_model.summary()
 print(base_model.input)
 print(base_model.output)
 
-img_path = 'dataset/test/Ukiyo_e/utagawa-kunisada_the-actor-ichikawa-kodanji-iv-as-subashiri-no-kumagoro-1859.jpg'
+img_path = '../dataset/test/Ukiyo_e/utagawa-kunisada_the-actor-ichikawa-kodanji-iv-as-subashiri-no-kumagoro-1859.jpg'
 
 img = image.load_img(img_path, target_size=(224, 224))
 input = image.img_to_array(img)
@@ -21,7 +21,7 @@ model = Model(inputs=base_model.input,
 print(model.input)
 print(model.output)
 
-img_path = 'dataset/test/Ukiyo_e/utagawa-kunisada_the-actor-ichikawa-kodanji-iv-as-subashiri-no-kumagoro-1859.jpg'
+img_path = 'd../ataset/test/Ukiyo_e/utagawa-kunisada_the-actor-ichikawa-kodanji-iv-as-subashiri-no-kumagoro-1859.jpg'
 img = image.load_img(img_path, target_size=(224, 224))
 input = image.img_to_array(img)
 result = model.predict(np.array([input]))
