@@ -7,6 +7,12 @@
 		<ClCompile Include="src\main.cpp">
 			<Filter>src</Filter>
 		</ClCompile>
+		<ClCompile Include="src\main.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\ofApp.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
 		<ClCompile Include="..\..\..\..\..\..\Program Files\of_v0.11.0_vs2017_release\addons\ofxOsc\src\ofxOscBundle.cpp">
 			<Filter>addons\ofxOsc\src</Filter>
 		</ClCompile>
@@ -43,6 +49,9 @@
 		<ClCompile Include="..\..\..\..\..\..\Program Files\of_v0.11.0_vs2017_release\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp">
 			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
 		</ClCompile>
+		<ClCompile Include="..\..\..\..\..\..\Program Files\of_v0.11.0_vs2017_release\addons\ofxThreadedImageLoader\src\ofxThreadedImageLoader.cpp">
+			<Filter>addons\ofxThreadedImageLoader\src</Filter>
+		</ClCompile>
 	</ItemGroup>
 	<ItemGroup>
 		<Filter Include="src">
@@ -75,8 +84,23 @@
 		<Filter Include="addons\ofxOsc\libs\oscpack\src\osc">
 			<UniqueIdentifier>{EDACB89C-9768-9551-4D41-B590}</UniqueIdentifier>
 		</Filter>
+		<Filter Include="addons\ofxScreenConsole">
+			<UniqueIdentifier>{DAEC0CC4-EF0E-B1EB-952A-58D2}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxScreenConsole\src">
+			<UniqueIdentifier>{CDB00050-EEBF-F04A-89C0-053F}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxThreadedImageLoader">
+			<UniqueIdentifier>{4FCFBE74-4716-4092-C67F-91AE}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxThreadedImageLoader\src">
+			<UniqueIdentifier>{96E590A4-6AB6-FE3D-02EC-8D08}</UniqueIdentifier>
+		</Filter>
 	</ItemGroup>
 	<ItemGroup>
+		<ClInclude Include="src\ofApp.h">
+			<Filter>src</Filter>
+		</ClInclude>
 		<ClInclude Include="src\ofApp.h">
 			<Filter>src</Filter>
 		</ClInclude>
@@ -139,6 +163,12 @@
 		</ClInclude>
 		<ClInclude Include="..\..\..\..\..\..\Program Files\of_v0.11.0_vs2017_release\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h">
 			<Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\Program Files\of_v0.11.0_vs2017_release\addons\ofxScreenConsole\src\ScreenConsole.h">
+			<Filter>addons\ofxScreenConsole\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\..\..\..\Program Files\of_v0.11.0_vs2017_release\addons\ofxThreadedImageLoader\src\ofxThreadedImageLoader.h">
+			<Filter>addons\ofxThreadedImageLoader\src</Filter>
 		</ClInclude>
 	</ItemGroup>
 	<ItemGroup>

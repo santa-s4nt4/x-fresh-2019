@@ -32,7 +32,10 @@ def oscReceive(unused_addr, bang):
         print('Receive Number: ' + bang)
 
         annoy_model_path = 'model/x-fresh.ann'
-        search_img_path = 'dataset/export/export.png'
+
+        # search_img_path = 'dataset/export/export.png' # max msp
+        search_img_path = 'dataDrivenArt/bin/data/export/export.png'  # openFrameworks
+
         print(search_img_path)
         annoy_dim = 4096
 
@@ -56,11 +59,20 @@ def oscReceive(unused_addr, bang):
         print(items)
         print(items[0])
 
-        msg = OscMessageBuilder(address='/')
+        msg = OscMessageBuilder(address='/image')
+
+        '''jitterで完結
         msg.add_arg(items[0])
+        print(items[0])
+        '''
+
+        # openFrameworksに送信する場合
+        msg.add_arg(items[0])
+        print('images/' + str(items[0]) + '.jpg')
 
         m = msg.build()
         client.send(m)
+
         backend.clear_session()
         print(f'Serving on {server.server_address}')
         break
