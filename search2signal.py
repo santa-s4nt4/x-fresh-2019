@@ -15,8 +15,8 @@ from pythonosc import udp_client
 from pythonosc.osc_message_builder import OscMessageBuilder
 
 IP = '127.0.0.1'
-SERVER_PORT = 54410
-CLIENT_PORT = 54411
+SERVER_PORT = 54414
+CLIENT_PORT = 54415
 
 client = udp_client.UDPClient(IP, CLIENT_PORT)
 
