@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -1402.0, 544.0, 1248.0, 861.0 ],
+		"rect" : [ 10.0, 528.0, 1248.0, 861.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -581,7 +581,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 45.0, 259.5, 105.0, 23.0 ],
-					"text" : "jit.grab 1280 720"
+					"text" : "jit.grab 1280 960"
 				}
 
 			}
