@@ -21,42 +21,50 @@ client = udp_client.UDPClient(IP, CLIENT_PORT)
 
 
 def oscReceive(unused_addr, bang):
-    print('Receive Number: ' + bang)
+    while True:
+        if bang == 'finish':
+            print('Receive Number: ' + bang)
+            break
 
-    annoy_model_path = 'model/x-fresh.ann'
-    search_img_path = 'export.png'
-    annoy_dim = 4096
+        print('Receive Number: ' + bang)
 
-    base_model = VGG16(weights="imagenet")
-    model = Model(inputs=base_model.input,
-                  outputs=base_model.get_layer("fc2").output)
+        annoy_model_path = 'model/x-fresh.ann'
+        search_img_path = 'export.png'
+        annoy_dim = 4096
 
-    loaded_model = AnnoyIndex(annoy_dim)
-    loaded_model.load(annoy_model_path)
+        base_model = VGG16(weights="imagenet")
+        model = Model(inputs=base_model.input,
+                      outputs=base_model.get_layer("fc2").output)
 
-    img_path = search_img_path
-    img = image.load_img(img_path, target_size=(224, 224))
+        loaded_model = AnnoyIndex(annoy_dim)
+        loaded_model.load(annoy_model_path)
 
-    x = image.img_to_array(img)
-    x = np.expand_dims(x, axis=0)
-    x = preprocess_input(x)
+        img_path = search_img_path
+        img = image.load_img(img_path, target_size=(224, 224))
 
-    fc2_features = model.predict(x)
-    items = loaded_model.get_nns_by_vector(
-        fc2_features[0], 3, search_k=-1, include_distances=False)
-    print(items)
-    print(items[0])
+        x = image.img_to_array(img)
+        x = np.expand_dims(x, axis=0)
+        x = preprocess_input(x)
 
-    msg = OscMessageBuilder(address='/')
-    msg.add_arg(items[0])
+        fc2_features = model.predict(x)
+        items = loaded_model.get_nns_by_vector(
+            fc2_features[0], 3, search_k=-1, include_distances=False)
+        print(items)
+        print(items[0])
 
-    m = msg.build()
-    client.send(m)
+        msg = OscMessageBuilder(address='/')
+        msg.add_arg(items[0])
+
+        m = msg.build()
+        client.send(m)
+        print(f'Serving on {server.server_address}')
+        break
 
 
 dispatcher = Dispatcher()
 dispatcher.map('/bang', oscReceive)
 
-server = osc_server.ThreadingOSCUDPServer((IP, SERVER_PORT), dispatcher)
+server = osc_server.ThreadingOSCUDPServer(
+    (IP, SERVER_PORT), dispatcher)
 print(f'Serving on {server.server_address}')
 server.serve_forever()
