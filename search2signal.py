@@ -24,7 +24,7 @@ def oscReceive(unused_addr, bang):
     print('Receive Number: ' + bang)
 
     annoy_model_path = 'model/x-fresh.ann'
-    search_img_path = input("\n>> 入力したい画像ファイルのPATH ： ")
+    search_img_path = 'export.png'
     annoy_dim = 4096
 
     base_model = VGG16(weights="imagenet")
