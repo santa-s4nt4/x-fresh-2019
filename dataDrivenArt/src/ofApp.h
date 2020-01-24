@@ -18,7 +18,9 @@ public:
 	int oscMessage;
 	ScreenConsole console;
 	ofImage cameraImage;
-	ofImage artImage;
+	ofImage firstImage;
+	ofImage secondImage;
+	ofImage thirdImage;
 	ofxThreadedImageLoader loader;
 	vector<ofImage> images;
 	int total;
