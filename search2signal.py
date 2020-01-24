@@ -57,18 +57,30 @@ def oscReceive(unused_addr, bang):
         items = loaded_model.get_nns_by_vector(
             fc2_features[0], 3, search_k=-1, include_distances=False)
         print(items)
-        print(items[0])
-
-        msg = OscMessageBuilder(address='/image')
-
-        msg.add_arg(items[0])
-        print(items[0])
-        print('images/' + str(items[0]) + '.jpg')
-
-        m = msg.build()
-        client.send(m)
 
         backend.clear_session()
+
+        msg_first = OscMessageBuilder(address='/first')
+        msg_second = OscMessageBuilder(address='/second')
+        msg_third = OscMessageBuilder(address='/third')
+
+        msg_first.add_arg(items[0])
+        msg_second.add_arg(items[1])
+        msg_third.add_arg(items[2])
+        print(items[0])
+        print(items[1])
+        print(items[2])
+        print('images/' + str(items[0]) + '.jpg')
+        print('images/' + str(items[1]) + '.jpg')
+        print('images/' + str(items[2]) + '.jpg')
+
+        m1 = msg_first.build()
+        m2 = msg_second.build()
+        m3 = msg_third.build()
+        client.send(m1)
+        client.send(m2)
+        client.send(m3)
+
         print(f'Serving on {server.server_address}')
         break
 
