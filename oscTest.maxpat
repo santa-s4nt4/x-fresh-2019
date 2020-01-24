@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1322.0, 510.0, 1196.0, 888.0 ],
+		"rect" : [ -1282.0, 493.0, 1196.0, 888.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,18 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 954.0, 553.0, 140.0, 22.0 ],
+					"text" : "/images 939 1981 226"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-7",
 					"maxclass" : "button",
@@ -196,7 +208,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 778.0, 731.5, 352.0, 22.0 ],
-					"text" : "read C:/Users/santa/Desktop/Python/x-fresh/dataset/All/1465.jpg"
+					"text" : "read C:/Users/santa/Desktop/Python/x-fresh/dataset/All/939.jpg"
 				}
 
 			}
@@ -1236,8 +1248,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-21", 0 ],
-					"midpoints" : [ 821.5, 540.0, 850.5, 540.0 ],
+					"destination" : [ "obj-10", 1 ],
+					"midpoints" : [ 821.5, 540.0, 1084.5, 540.0 ],
 					"order" : 0,
 					"source" : [ "obj-6", 0 ]
 				}
@@ -1245,8 +1257,17 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-48", 0 ],
+					"destination" : [ "obj-21", 0 ],
+					"midpoints" : [ 821.5, 540.0, 850.5, 540.0 ],
 					"order" : 1,
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-48", 0 ],
+					"order" : 2,
 					"source" : [ "obj-6", 0 ]
 				}
 
