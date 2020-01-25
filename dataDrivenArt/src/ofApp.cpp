@@ -4,8 +4,6 @@
 void ofApp::setup(){
 	receiver.setup(PORT);
 
-	fbo.allocate(ofGetWidth(), ofGetHeight());
-
 	ofDirectory dir(ofToDataPath("./images/"));
 
 	total = dir.listDir();
@@ -17,6 +15,10 @@ void ofApp::setup(){
 		images[i].resize(640, 480);
 	}
 	cout << total << " images loaded" << endl;
+
+	shader.load("shader/shader.vert", "shader/shader.frag");
+
+	fbo.allocate(ofGetWidth(), ofGetHeight());
 }
 
 //--------------------------------------------------------------
@@ -65,8 +67,16 @@ void ofApp::draw(){
 	firstImage.draw(0, 0, ofGetWidth() / 2, ofGetHeight() / 2);
 	secondImage.draw(ofGetWidth() / 2, 0, ofGetWidth() / 2, ofGetHeight() / 2);
 	thirdImage.draw(ofGetWidth() / 2, ofGetHeight() / 2, ofGetWidth() / 2, ofGetHeight() / 2);
-	
+
 	fbo.end();
+
+	shader.begin();
+	shader.setUniformTexture("texture", fbo, 0);
+	shader.setUniform2f("resolution", ofGetWidth(), ofGetHeight());
+	shader.setUniform1f("time", ofGetElapsedTimef());
+
+	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+	shader.end();
 
 	console.print(40, 40);
 }

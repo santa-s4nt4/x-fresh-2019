@@ -16,7 +16,6 @@ public:
 	void draw();
 	ofxOscReceiver receiver;
 	int oscMessage;
-	ofFbo fbo;
 	ScreenConsole console;
 	ofImage cameraImage;
 	ofImage firstImage;
@@ -25,4 +24,6 @@ public:
 	ofxThreadedImageLoader loader;
 	vector<ofImage> images;
 	int total;
+	ofShader shader;
+	ofFbo fbo;
 };
