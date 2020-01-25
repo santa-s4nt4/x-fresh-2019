@@ -16,6 +16,9 @@ public:
 	void draw();
 	ofxOscReceiver receiver;
 	int oscMessage;
+	float osc1;
+	float osc2;
+	float osc3;
 	ScreenConsole console;
 	ofImage cameraImage;
 	ofImage firstImage;
@@ -24,6 +27,11 @@ public:
 	ofxThreadedImageLoader loader;
 	vector<ofImage> images;
 	int total;
+
+	void audioIn(float * input, int bufferSize, int nChannels);
+	ofSoundStream soundStream;
+	float curVol;
+	
 	ofShader shader;
 	ofFbo fbo;
 	ofEasyCam cam;

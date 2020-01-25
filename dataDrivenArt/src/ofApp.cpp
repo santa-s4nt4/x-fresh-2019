@@ -1,8 +1,21 @@
 #include "ofApp.h"
 
+
+void ofApp::audioIn(float * input, int bufferSize, int nChannels) {
+	curVol = 0.5;
+
+	for (int i = 0; i < bufferSize; i++) {
+		curVol += input[i] * input[i]; // ’®Šoã‚Ío—Í‚Ì2æ‚É”ä—á‚·‚é‚Ì‚Å2æ
+	}
+
+	curVol /= bufferSize; // •½‹Ï
+}
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofEnableDepthTest();
+
+	soundStream.setup(this, 0, 2, 44100, 256, 4);
 
 	shader.load("shader/shader.vert", "shader/shader.frag");
 
@@ -41,6 +54,7 @@ void ofApp::update(){
 			std::string path = front + std::to_string(oscMessage) + back;
 			console(path);
 			firstImage.load(path);
+			osc1 = oscMessage;
 		}
 
 		if (m.getAddress() == "/second") {
@@ -49,6 +63,7 @@ void ofApp::update(){
 			std::string path = front + std::to_string(oscMessage) + back;
 			console(path);
 			secondImage.load(path);
+			osc2 = oscMessage;
 		}
 
 		if (m.getAddress() == "/third") {
@@ -57,6 +72,7 @@ void ofApp::update(){
 			std::string path = front + std::to_string(oscMessage) + back;
 			console(path);
 			thirdImage.load(path);
+			osc3 = oscMessage;
 		}
 	}
 }
@@ -85,6 +101,10 @@ void ofApp::draw(){
 	shader.begin();
 	shader.setUniformTexture("texture", fbo, 0);
 	shader.setUniform2f("resolution", ofGetWidth(), ofGetHeight());
+	shader.setUniform1f("sound", curVol);
+	shader.setUniform1f("number1", osc1);
+	shader.setUniform1f("number2", osc2);
+	shader.setUniform1f("number3", osc3);
 	shader.setUniform1f("time", ofGetElapsedTimef());
 
 	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
