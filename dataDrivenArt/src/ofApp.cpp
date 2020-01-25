@@ -4,6 +4,8 @@
 void ofApp::setup(){
 	receiver.setup(PORT);
 
+	fbo.allocate(ofGetWidth(), ofGetHeight());
+
 	ofDirectory dir(ofToDataPath("./images/"));
 
 	total = dir.listDir();
@@ -57,10 +59,14 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	fbo.begin();
+
 	cameraImage.draw(0, ofGetHeight() / 2, ofGetWidth() / 2, ofGetHeight() / 2);
 	firstImage.draw(0, 0, ofGetWidth() / 2, ofGetHeight() / 2);
 	secondImage.draw(ofGetWidth() / 2, 0, ofGetWidth() / 2, ofGetHeight() / 2);
 	thirdImage.draw(ofGetWidth() / 2, ofGetHeight() / 2, ofGetWidth() / 2, ofGetHeight() / 2);
+	
+	fbo.end();
 
 	console.print(40, 40);
 }

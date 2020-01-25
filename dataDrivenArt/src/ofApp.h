@@ -16,6 +16,7 @@ public:
 	void draw();
 	ofxOscReceiver receiver;
 	int oscMessage;
+	ofFbo fbo;
 	ScreenConsole console;
 	ofImage cameraImage;
 	ofImage firstImage;
