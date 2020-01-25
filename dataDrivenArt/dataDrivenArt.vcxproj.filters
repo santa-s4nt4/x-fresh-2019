@@ -175,10 +175,10 @@
     <ResourceCompile Include="icon.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shader\shader.frag">
+    <None Include="bin\data\shader\shader.frag">
       <Filter>src</Filter>
     </None>
-    <None Include="src\shader\shader.vert">
+    <None Include="bin\data\shader\shader.vert">
       <Filter>src</Filter>
     </None>
   </ItemGroup>

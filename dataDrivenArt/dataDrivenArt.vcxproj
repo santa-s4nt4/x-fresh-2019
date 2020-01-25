@@ -238,8 +238,8 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shader\shader.frag" />
-    <None Include="src\shader\shader.vert" />
+    <None Include="bin\data\shader\shader.frag" />
+    <None Include="bin\data\shader\shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>

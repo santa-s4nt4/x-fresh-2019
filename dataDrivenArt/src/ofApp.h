@@ -26,4 +26,5 @@ public:
 	int total;
 	ofShader shader;
 	ofFbo fbo;
+	ofEasyCam cam;
 };

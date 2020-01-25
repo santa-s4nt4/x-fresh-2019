@@ -2,6 +2,12 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	ofEnableDepthTest();
+
+	shader.load("shader/shader.vert", "shader/shader.frag");
+
+	fbo.allocate(ofGetWidth(), ofGetHeight());
+
 	receiver.setup(PORT);
 
 	ofDirectory dir(ofToDataPath("./images/"));
@@ -15,10 +21,6 @@ void ofApp::setup(){
 		images[i].resize(640, 480);
 	}
 	cout << total << " images loaded" << endl;
-
-	shader.load("shader/shader.vert", "shader/shader.frag");
-
-	fbo.allocate(ofGetWidth(), ofGetHeight());
 }
 
 //--------------------------------------------------------------
@@ -62,6 +64,15 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	fbo.begin();
+	ofClear(0, 0, 0, 0);
+	ofPushMatrix();
+	ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
+
+	cam.begin();
+
+	cam.end();
+
+	ofPopMatrix();
 
 	cameraImage.draw(0, ofGetHeight() / 2, ofGetWidth() / 2, ofGetHeight() / 2);
 	firstImage.draw(0, 0, ofGetWidth() / 2, ofGetHeight() / 2);
@@ -70,6 +81,7 @@ void ofApp::draw(){
 
 	fbo.end();
 
+	// PostEffect
 	shader.begin();
 	shader.setUniformTexture("texture", fbo, 0);
 	shader.setUniform2f("resolution", ofGetWidth(), ofGetHeight());

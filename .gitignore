@@ -3,11 +3,8 @@
 wikiart/
 dataset/
 model/
-01santa.jpg
-02kinkaku.jpg
-03katoriku.jpg
-export.png
-dataDrivenArt/bin/data
+dataDrivenArt/bin/data/export/
+dataDrivenArt/bin/data/images/
 
 tignore is a file which makes git ignore files which should
 # not go into version control in the first place
@@ -22,6 +19,7 @@ tignore is a file which makes git ignore files which should
 
 /bin/*
 !/bin/data/
+
 
 #########
 # general
