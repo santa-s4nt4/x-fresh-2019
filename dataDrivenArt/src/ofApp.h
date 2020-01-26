@@ -27,12 +27,22 @@ public:
 	ofxThreadedImageLoader loader;
 	vector<ofImage> images;
 	int total;
-
-	void audioIn(float * input, int bufferSize, int nChannels);
-	ofSoundStream soundStream;
-	float curVol;
 	
 	ofShader shader;
 	ofFbo fbo;
 	ofEasyCam cam;
+
+	void audioIn(ofSoundBuffer & input);
+
+	vector <float> left;
+	vector <float> right;
+	vector <float> volHistory;
+
+	int bufferCounter;
+	int drawCounter;
+
+	float smoothedVol;
+	float scaledVol;
+
+	ofSoundStream soundStream;
 };
