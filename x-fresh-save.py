@@ -4,7 +4,8 @@ from keras.applications.vgg16 import preprocess_input, VGG16
 from keras.models import Model
 from annoy import AnnoyIndex
 
-img_dir_path = 'dataset/All/'
+# img_dir_path = 'dataset/All/'
+img_dir_path = 'dataDrivenArt/bin/data/images/'
 annoy_model_path = 'model/x-fresh.ann'
 annoy_dim = 4096
 
@@ -14,7 +15,7 @@ model = Model(inputs=base_model.input,
 
 annoy_model = AnnoyIndex(annoy_dim)
 
-for i in range(1, 2156):
+for i in range(1, 3988):
     img_path = img_dir_path + str(i) + '.jpg'
     img = image.load_img(img_path, target_size=(224, 224))
     x = image.img_to_array(img)
@@ -26,5 +27,5 @@ for i in range(1, 2156):
     annoy_model.add_item(i, fc2_features[0])
     print(img_path, 'saved')
 
-annoy_model.build(2155)
+annoy_model.build(3987)
 annoy_model.save(annoy_model_path)
