@@ -37,11 +37,13 @@ def oscReceive(unused_addr, bang):
         search_img_path = 'dataDrivenArt/bin/data/export/export.png'  # openFrameworks
 
         print(search_img_path)
-        annoy_dim = 4096
+        # annoy_dim = 4096
+        annoy_dim = 25088
 
         base_model = VGG16(weights="imagenet")
+        # model = Model(inputs=base_model.input, outputs=base_model.get_layer("fc2").output)
         model = Model(inputs=base_model.input,
-                      outputs=base_model.get_layer("fc2").output)
+                      outputs=base_model.get_layer("flatten").output)
 
         loaded_model = AnnoyIndex(annoy_dim)
         loaded_model.load(annoy_model_path)

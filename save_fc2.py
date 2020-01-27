@@ -6,12 +6,12 @@ from annoy import AnnoyIndex
 
 # img_dir_path = 'dataset/All/'
 img_dir_path = 'dataDrivenArt/bin/data/images/'
-annoy_model_path = 'model/x-fresh.ann'
+annoy_model_path = 'model/x-fresh-fc2.ann'
 annoy_dim = 4096
 
-base_model = VGG16(weights="imagenet")
+base_model = VGG16(weights='imagenet')
 model = Model(inputs=base_model.input,
-              outputs=base_model.get_layer("fc2").output)
+              outputs=base_model.get_layer('fc2').output)
 
 annoy_model = AnnoyIndex(annoy_dim)
 
