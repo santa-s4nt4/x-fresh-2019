@@ -5,6 +5,7 @@ dataset/
 model/
 dataDrivenArt/bin/data/export/
 dataDrivenArt/bin/data/images/
+cclab.jpg
 
 tignore is a file which makes git ignore files which should
 # not go into version control in the first place
