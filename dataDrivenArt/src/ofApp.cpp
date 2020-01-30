@@ -75,10 +75,20 @@ void ofApp::update(){
 
 		std::string msg;
 		sub.getNextMessage(msg);
-		firstImage.load(msg);
-		secondImage.load(msg);
-		thirdImage.load(msg);
-		console(msg);
+		std::string img1 = msg.substr(0, 4);
+		std::string img2 = msg.substr(5, 4);
+		std::string img3 = msg.substr(10, 4);
+
+		console(img1);
+		console(img2);
+		console(img3);
+
+		std::string path1 = "images/" + img1 + ".jpg";
+		std::string path2 = "images/" + img2 + ".jpg";
+		std::string path3 = "images/" + img3 + ".jpg";
+		firstImage.load(path1);
+		secondImage.load(path2);
+		thirdImage.load(path3);
 	}
 }
 

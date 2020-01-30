@@ -53,6 +53,7 @@ def oscReceive(unused_addr, bang):
 
         # fc2_features = model.predict(x)
         flatten_features = model.predict(x)
+
         # items = loaded_model.get_nns_by_vector(fc2_features[0], 3, search_k=-1, include_distances=False)
         items = loaded_model.get_nns_by_vector(
             flatten_features[0], 3, search_k=-1, include_distances=False)
@@ -63,11 +64,14 @@ def oscReceive(unused_addr, bang):
         print(items[0])
         print(items[1])
         print(items[2])
-        print('images/' + str(items[0]) + '.jpg')
-        print('images/' + str(items[1]) + '.jpg')
-        print('images/' + str(items[2]) + '.jpg')
+        print('images/' + str(items[0]).zfill(4) + '.jpg')
+        print('images/' + str(items[1]).zfill(4) + '.jpg')
+        print('images/' + str(items[2]).zfill(4) + '.jpg')
 
-        img_number = str(items[0]) + ',' + str(items[1]) + ',' + str(items[2])
+        img_number = str(items[0]).zfill(4) + ',' + \
+            str(items[1]).zfill(4) + ',' + str(items[2]).zfill(4)
+
+        print(img_number)
 
         # socket.send_string(str(items))
         socket.send_string(img_number)
