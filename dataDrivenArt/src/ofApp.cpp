@@ -32,41 +32,12 @@ void ofApp::update(){
 
 		receiver.getNextMessage(m);
 
-		//oscMessage = m.getArgAsInt32(0);
 		oscMessage = m.getArgAsFloat(0);
 		console("address") << oscMessage << " " << m.getNumArgs();
 
-		/*
-		if (m.getAddress() == "/first") {
-			std::string front = "images/";
-			std::string back = ".jpg";
-			std::string path = front + std::to_string(oscMessage) + back;
-			console(path);
-			firstImage.load(path);
-			osc1 = oscMessage;
-		}
-
-		if (m.getAddress() == "/second") {
-			std::string front = "images/";
-			std::string back = ".jpg";
-			std::string path = front + std::to_string(oscMessage) + back;
-			console(path);
-			secondImage.load(path);
-			osc2 = oscMessage;
-		}
-
-		if (m.getAddress() == "/third") {
-			std::string front = "images/";
-			std::string back = ".jpg";
-			std::string path = front + std::to_string(oscMessage) + back;
-			console(path);
-			thirdImage.load(path);
-			osc3 = oscMessage;
-		}
-		*/
-		
 		if (m.getAddress() == "/vol") {
-			vol = oscMessage;
+			std::string oscVol = std::to_string(oscMessage);
+			console(oscVol);
 		}
 	}
 	
@@ -118,7 +89,7 @@ void ofApp::draw(){
 	shader.begin();
 	shader.setUniformTexture("texture", fbo, 0);
 	shader.setUniform2f("resolution", ofGetWidth(), ofGetHeight());
-	shader.setUniform1f("vol", vol);
+	shader.setUniform1f("vol", oscMessage);
 	shader.setUniform1f("time", ofGetElapsedTimef());
 
 	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());

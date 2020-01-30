@@ -17,7 +17,6 @@ public:
 	void draw();
 	ofxOscReceiver receiver;
 	float oscMessage;
-	float vol;
 	ofxZmqSubscriber sub;
 	ScreenConsole console;
 	ofImage cameraImage;
