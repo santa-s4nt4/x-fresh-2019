@@ -17,6 +17,7 @@ annoy = "*"
 python-osc = "*"
 matplotlib = "*"
 tensorflow-gpu = "==1.15.2"
+pyzmq = "*"
 
 [requires]
 python_version = "3.7"
