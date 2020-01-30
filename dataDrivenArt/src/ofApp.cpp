@@ -73,9 +73,12 @@ void ofApp::update(){
 	while (sub.hasWaitingMessage()) {
 		cameraImage.load("cam/export.png");
 
-		std::string path;
-		sub.getNextMessage(path);
-		console(path);
+		std::string msg;
+		sub.getNextMessage(msg);
+		firstImage.load(msg);
+		secondImage.load(msg);
+		thirdImage.load(msg);
+		console(msg);
 	}
 }
 

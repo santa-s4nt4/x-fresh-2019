@@ -67,7 +67,10 @@ def oscReceive(unused_addr, bang):
         print('images/' + str(items[1]) + '.jpg')
         print('images/' + str(items[2]) + '.jpg')
 
-        socket.send_string(str(items))
+        img_number = str(items[0]) + ',' + str(items[1]) + ',' + str(items[2])
+
+        # socket.send_string(str(items))
+        socket.send_string(img_number)
 
         print(f'Serving on {server.server_address}')
         break
