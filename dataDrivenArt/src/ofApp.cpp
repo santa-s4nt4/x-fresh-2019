@@ -30,8 +30,9 @@ void ofApp::update(){
 
 		receiver.getNextMessage(m);
 
-		oscMessage = m.getArgAsInt32(0);
-		//console("address") << oscMessage << " " << m.getNumArgs();
+		//oscMessage = m.getArgAsInt32(0);
+		oscMessage = m.getArgAsFloat(0);
+		console("address") << oscMessage << " " << m.getNumArgs();
 
 		cameraImage.load("export/export.png");
 
@@ -100,5 +101,5 @@ void ofApp::draw(){
 	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
 	shader.end();
 
-	//console.print(40, 40);
+	console.print(40, 40);
 }
