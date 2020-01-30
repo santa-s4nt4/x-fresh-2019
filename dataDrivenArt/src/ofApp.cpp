@@ -10,6 +10,8 @@ void ofApp::setup(){
 
 	receiver.setup(PORT);
 
+	sub.connect("tcp://127.0.0.1:54414");
+
 	ofDirectory dir(ofToDataPath("./images/"));
 
 	total = dir.listDir();
@@ -33,8 +35,6 @@ void ofApp::update(){
 		//oscMessage = m.getArgAsInt32(0);
 		oscMessage = m.getArgAsFloat(0);
 		console("address") << oscMessage << " " << m.getNumArgs();
-
-		cameraImage.load("export/export.png");
 
 		/*
 		if (m.getAddress() == "/first") {
@@ -69,10 +69,20 @@ void ofApp::update(){
 			vol = oscMessage;
 		}
 	}
+	
+	while (sub.hasWaitingMessage()) {
+		cameraImage.load("cam/export.png");
+
+		std::string path;
+		sub.getNextMessage(path);
+		console(path);
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	console.print(40, 40);
+
 	fbo.begin();
 	ofClear(0, 0, 0, 0);
 	ofPushMatrix();
@@ -100,6 +110,4 @@ void ofApp::draw(){
 
 	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
 	shader.end();
-
-	console.print(40, 40);
 }

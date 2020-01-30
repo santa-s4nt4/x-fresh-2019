@@ -14,16 +14,14 @@ from pythonosc.dispatcher import Dispatcher
 import zmq
 
 IP = '127.0.0.1'
-SERVER_PORT = 54414
-
-client = udp_client.UDPClient(IP, CLIENT_PORT)
+PORT = 54414
 
 
 def oscReceive(unused_addr, bang):
 
     context = zmq.Context()
-    socket = context.socket(zmq.REQ)
-    socket.connect("tcp://localhost:54414")
+    socket = context.socket(zmq.PUB)
+    socket.bind("tcp://{}:{}".format(IP, PORT))  # pub
 
     while True:
 
@@ -32,7 +30,7 @@ def oscReceive(unused_addr, bang):
         annoy_model_path = 'model/x-fresh-flatten.ann'
 
         # search_img_path = 'dataset/export/export.png' # max msp
-        search_img_path = 'dataDrivenArt/bin/data/export/export.png'  # openFrameworks
+        search_img_path = 'dataDrivenArt/bin/data/cam/export.png'  # openFrameworks
 
         print(search_img_path)
         # annoy_dim = 4096 # fc2を使った場合
@@ -69,13 +67,7 @@ def oscReceive(unused_addr, bang):
         print('images/' + str(items[1]) + '.jpg')
         print('images/' + str(items[2]) + '.jpg')
 
-        path1 = items[0]
-        path2 = items[1]
-        path3 = items[2]
-
-        socket.send_string(path1)
-        socket.send_string(path2)
-        socket.send_string(path3)
+        socket.send_string(str(items))
 
         print(f'Serving on {server.server_address}')
         break
@@ -85,6 +77,6 @@ dispatcher = Dispatcher()
 dispatcher.map('/bang', oscReceive)
 
 server = osc_server.ThreadingOSCUDPServer(
-    (IP, SERVER_PORT), dispatcher)
+    (IP, PORT), dispatcher)
 print(f'Serving on {server.server_address}')
 server.serve_forever()

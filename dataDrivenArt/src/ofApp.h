@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
+#include "ofxZmq.h"
 #include "ScreenConsole.h"
 #include "ofxThreadedImageLoader.h"
 
@@ -17,6 +18,7 @@ public:
 	ofxOscReceiver receiver;
 	float oscMessage;
 	float vol;
+	ofxZmqSubscriber sub;
 	ScreenConsole console;
 	ofImage cameraImage;
 	ofImage firstImage;

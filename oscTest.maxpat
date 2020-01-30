@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-57",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 212.0, 208.0, 283.0, 22.0 ],
+					"text" : "exportimage dataDrivenArt/bin/data/cam/export png"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"format" : 6,
 					"id" : "obj-15",
 					"maxclass" : "flonum",
@@ -47,18 +59,6 @@
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 821.5, 190.0, 50.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-57",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 197.0, 193.0, 294.0, 22.0 ],
-					"text" : "exportimage dataDrivenArt/bin/data/export/export png"
 				}
 
 			}
@@ -131,12 +131,12 @@
 					"patching_rect" : [ 580.5, 231.0, 48.0, 136.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_type" : 0,
-							"parameter_unitstyle" : 4,
 							"parameter_mmin" : -70.0,
 							"parameter_longname" : "live.gain~[1]",
 							"parameter_mmax" : 6.0,
-							"parameter_shortname" : "live.gain~"
+							"parameter_shortname" : "live.gain~",
+							"parameter_type" : 0,
+							"parameter_unitstyle" : 4
 						}
 
 					}
@@ -1459,7 +1459,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-57", 0 ],
-					"midpoints" : [ 287.5, 102.0, 252.0, 102.0, 252.0, 186.0, 206.5, 186.0 ],
+					"midpoints" : [ 287.5, 102.0, 252.0, 102.0, 252.0, 195.0, 221.5, 195.0 ],
 					"order" : 1,
 					"source" : [ "obj-7", 0 ]
 				}
