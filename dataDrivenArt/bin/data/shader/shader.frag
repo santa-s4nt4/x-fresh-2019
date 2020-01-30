@@ -1,9 +1,7 @@
 uniform vec2 resolution;
 uniform sampler2DRect texture;
 uniform float time;
-uniform float number1;
-uniform float number2;
-uniform float number3;
+uniform float vol;
  
 varying vec2 vTexCoord;
  

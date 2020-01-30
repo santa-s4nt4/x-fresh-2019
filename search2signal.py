@@ -31,7 +31,7 @@ def oscReceive(unused_addr, bang):
 
         print('Receive Number: ' + bang)
 
-        annoy_model_path = 'model/x-fresh.ann'
+        annoy_model_path = 'model/x-fresh-flatten.ann'
 
         # search_img_path = 'dataset/export/export.png' # max msp
         search_img_path = 'dataDrivenArt/bin/data/export/export.png'  # openFrameworks

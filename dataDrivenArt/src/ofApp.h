@@ -16,9 +16,11 @@ public:
 	void draw();
 	ofxOscReceiver receiver;
 	int oscMessage;
+	float oscVol;
 	float osc1;
 	float osc2;
 	float osc3;
+	int vol;
 	ScreenConsole console;
 	ofImage cameraImage;
 	ofImage firstImage;

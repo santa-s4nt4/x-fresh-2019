@@ -31,10 +31,11 @@ void ofApp::update(){
 		receiver.getNextMessage(m);
 
 		oscMessage = m.getArgAsInt32(0);
-		console("address") << oscMessage << " " << m.getNumArgs();
+		//console("address") << oscMessage << " " << m.getNumArgs();
 
 		cameraImage.load("export/export.png");
 
+		/*
 		if (m.getAddress() == "/first") {
 			std::string front = "images/";
 			std::string back = ".jpg";
@@ -60,6 +61,11 @@ void ofApp::update(){
 			console(path);
 			thirdImage.load(path);
 			osc3 = oscMessage;
+		}
+		*/
+		
+		if (m.getAddress() == "/vol") {
+			vol = oscMessage;
 		}
 	}
 }
@@ -88,13 +94,11 @@ void ofApp::draw(){
 	shader.begin();
 	shader.setUniformTexture("texture", fbo, 0);
 	shader.setUniform2f("resolution", ofGetWidth(), ofGetHeight());
-	shader.setUniform1f("number1", osc1);
-	shader.setUniform1f("number2", osc2);
-	shader.setUniform1f("number3", osc3);
+	shader.setUniform1f("vol", vol);
 	shader.setUniform1f("time", ofGetElapsedTimef());
 
 	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
 	shader.end();
 
-	console.print(40, 40);
+	//console.print(40, 40);
 }
