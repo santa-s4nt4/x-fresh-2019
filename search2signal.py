@@ -11,23 +11,21 @@ from pythonosc import osc_server
 from pythonosc.dispatcher import Dispatcher
 
 # client
-from pythonosc import udp_client
-from pythonosc.osc_message_builder import OscMessageBuilder
+import zmq
 
 IP = '127.0.0.1'
 SERVER_PORT = 54414
-CLIENT_PORT = 54415
 
 client = udp_client.UDPClient(IP, CLIENT_PORT)
 
 
 def oscReceive(unused_addr, bang):
 
-    while True:
+    context = zmq.Context()
+    socket = context.socket(zmq.REQ)
+    socket.connect("tcp://localhost:54414")
 
-        if bang == 'finish':
-            print('Receive Number: ' + bang)
-            break
+    while True:
 
         print('Receive Number: ' + bang)
 
@@ -64,13 +62,6 @@ def oscReceive(unused_addr, bang):
 
         backend.clear_session()
 
-        msg_first = OscMessageBuilder(address='/first')
-        msg_second = OscMessageBuilder(address='/second')
-        msg_third = OscMessageBuilder(address='/third')
-
-        msg_first.add_arg(items[0])
-        msg_second.add_arg(items[1])
-        msg_third.add_arg(items[2])
         print(items[0])
         print(items[1])
         print(items[2])
@@ -78,12 +69,13 @@ def oscReceive(unused_addr, bang):
         print('images/' + str(items[1]) + '.jpg')
         print('images/' + str(items[2]) + '.jpg')
 
-        m1 = msg_first.build()
-        m2 = msg_second.build()
-        m3 = msg_third.build()
-        client.send(m1)
-        client.send(m2)
-        client.send(m3)
+        path1 = items[0]
+        path2 = items[1]
+        path3 = items[2]
+
+        socket.send_string(path1)
+        socket.send_string(path2)
+        socket.send_string(path3)
 
         print(f'Serving on {server.server_address}')
         break

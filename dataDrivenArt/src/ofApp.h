@@ -15,7 +15,6 @@ public:
 	void update();
 	void draw();
 	ofxOscReceiver receiver;
-	//int oscMessage;
 	float oscMessage;
 	float vol;
 	ScreenConsole console;

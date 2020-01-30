@@ -1,3 +1,4 @@
 ofxOsc
 ofxScreenConsole
 ofxThreadedImageLoader
+ofxZmqWindows
