@@ -5,6 +5,7 @@
 #include "ofxZmq.h"
 #include "ScreenConsole.h"
 #include "ofxThreadedImageLoader.h"
+#include "ofxSpout.h"
 
 #define HOST "127.0.0.1"
 #define PORT 54415
