@@ -27,7 +27,8 @@ public:
 	ofxThreadedImageLoader loader;
 	vector<ofImage> images;
 	int total;
-	
+	ofxSpout::Sender sender;
+
 	ofShader shader;
 	ofFbo fbo;
 	ofEasyCam cam;

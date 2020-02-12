@@ -2,9 +2,13 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	ofSetWindowTitle("Sender");
+
+	sender.init("My Sender");
+
 	ofEnableDepthTest();
 
-	shader.load("shader/shader.vert", "shader/shader.frag");
+	//shader.load("shader/shader.vert", "shader/shader.frag");
 
 	fbo.allocate(ofGetWidth(), ofGetHeight());
 
@@ -20,13 +24,15 @@ void ofApp::setup(){
 
 	for (int i = 0; i < total; i++) {
 		loader.loadFromDisk(images[i], dir.getName(i));
-		images[i].resize(640, 480);
+		images[i].resize(1280, 960);
 	}
 	cout << total << " images loaded" << endl;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	sender.send(fbo.getTexture());
+
 	while (receiver.hasWaitingMessages()) {
 		ofxOscMessage m;
 
@@ -86,12 +92,14 @@ void ofApp::draw(){
 	fbo.end();
 
 	// PostEffect
+	/*
 	shader.begin();
 	shader.setUniformTexture("texture", fbo, 0);
 	shader.setUniform2f("resolution", ofGetWidth(), ofGetHeight());
 	shader.setUniform1f("vol", oscMessage);
 	shader.setUniform1f("time", ofGetElapsedTimef());
+	*/
 
-	ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
-	shader.end();
+	//ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+	//shader.end();
 }
